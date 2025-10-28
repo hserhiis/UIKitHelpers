@@ -12,19 +12,16 @@ public extension UIWindowScene {
     ///
     /// ```swift
     /// guard let windowScene = (scene as? UIWindowScene) else { return }
-    /// windowScene.makeRoot(FirstViewController(), assignTo: &window)
+    /// window = windowScene.makeRoot(FirstViewController())
     /// ```
     ///
     /// - Parameters:
     ///   - rootVC: The view controller to set as the `rootViewController`.
-    ///   - windowRef: A reference to the `UIWindow?` to retain the window in memory.
-    func makeRoot<T: UIViewController>(
-        _ rootVC: T,
-        assignTo windowRef: inout UIWindow?
-    ) {
+    @discardableResult
+    func makeRoot<T: UIViewController>(_ rootVC: T) -> UIWindow {
         let window = UIWindow(windowScene: self)
         window.rootViewController = rootVC
         window.makeKeyAndVisible()
-        windowRef = window
+        return window
     }
 }
