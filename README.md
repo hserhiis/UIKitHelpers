@@ -44,6 +44,11 @@ class MyViewController: UIViewController, AdaptiveUI {
         // Enable adaptive UI
         enableAdaptiveUI()
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        styleUI()
+    }
 
     func styleUI() {
         switch sizeClass {
